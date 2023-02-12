@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "gulp-cached": "^1.1.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-install": "^1.1.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "static-server": "^2.2.1",
+    "uglify-js": "^3.17.4"
+  },
+  "name": "walleter-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-livereload": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.58.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kiyomi Dev",
+  "license": "ISC",
+  "description": ""
+}
