@@ -1,0 +1,48 @@
+@use 'variables/colors' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  @media (max-width: 48em) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: $font-color-primary;
+  line-height: 1.9;
+  background-color: $bg-color-primary;
+  overflow-x: hidden;
+}
+
+/* START GENERAL ELEMENTS */
+.btn {
+  display: inline-block;
+  background-color: $color-primary;
+  font-size: 1.6rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  padding: 1.25rem 4.5rem;
+  border-radius: 10rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: $color-primary-darker;
+  }
+}
+
+p {
+  color: #666;
+}
+/* END GENERAL ELEMENTS */
