@@ -1,0 +1,23 @@
+doctype html
+html(lang="en") 
+  head
+    include components/inhead
+    title Walleter | Your New Money Manager
+
+  body
+    header.header
+      nav.nav
+        a(href='/')
+          img.nav__logo(src='static/images/logo.png' alt='Budgetify logo')
+        ul.nav__links
+          li.nav__item.start
+            a.nav__link.nav__link--btn(href='signup.html') Start now
+
+    .header__title
+      h1
+        | Take
+        span.highlight control 
+         | of your
+        br
+        span.highlight finances
+      h4 Track all your money moves in one place
