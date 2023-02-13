@@ -1,0 +1,17 @@
+.footer {
+  padding: 3rem;
+  background-color: #444;
+  .footer__link {
+    font-size: 1.6rem;
+    color: #eee;
+    text-decoration: none;
+  }
+  .footer__copyright {
+    font-size: 1.4rem;
+    color: #ccc;
+    text-align: center;
+    .footer__link {
+      font-size: 1.4rem;
+    }
+  }
+}
