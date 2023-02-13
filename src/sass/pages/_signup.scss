@@ -1,0 +1,169 @@
+@use 'variables/colors' as *;
+@use 'helpers/mixins' as *;
+@use 'layout/helper-classes' as *;
+
+.setup__header {
+  padding: 20px;
+  background-color: $bg-color-primary;
+  border-bottom: 1px solid #e5e9ed;
+  .progressbar {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: inherit;
+    .bar,
+    .bar__done {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #e5e9ed;
+    }
+    .step {
+      @include centering(vertical);
+      font-size: 1.5rem;
+      color: #7e7c7c;
+      font-weight: 500;
+      position: relative;
+      background-color: inherit;
+    }
+
+    .step__title {
+      @include centering(both);
+      gap: 8px;
+      padding: 0 15px;
+    }
+
+    .step__num {
+      @include centering(both);
+      width: 30px;
+      height: 30px;
+      background-color: #7F8FA4;
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    .step__done {
+      color: $color-primary;
+      .step__num {
+        background-color: $color-primary;
+      }
+    }
+
+    .step__active {
+      color: #354052;
+      .step__num {
+        background-color: #007aff;
+      }
+    }
+  }
+}
+
+/* Start Settings */
+.setup {
+  background-color: #fff;
+  height: calc(100vh - 71px);
+  @include centering(both);
+  .setting { 
+    width: 45rem;
+    padding: 20px;
+    text-align: center;
+    .step__icon {
+      max-width: 150px;
+    }
+
+    .step__title {
+      font: {
+        size: 2.4rem;
+        weight: 500;
+      }
+    }
+
+    .input__group {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #5E5E5E;
+      text-align: start;
+      .input {
+        outline: none;
+        padding: 10px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        border: 1px solid #ccd2db;
+        color: #5E5E5E;
+        border-radius: 4px;
+        &:focus {
+          outline: 1px solid $color-primary;
+        }
+      }
+
+      .currencies__list:focus {
+        border: 1px solid $color-primary;
+        outline: none;
+      }
+    }
+
+    .confirm__step {
+      width: 100%;
+      margin: 2.25rem 0;
+      padding: 1.2rem;
+      color: #fff;
+    }
+
+    .input__description {
+      font-size: 1.25rem;
+      color: #a2a2a2;
+      text-align: start;
+    }
+  }
+}
+
+/* START ACCOUNT CREATED */
+.account__created {
+  @include centering(both);
+  flex-direction: column;
+  gap: 2.5rem;
+  height: 100vh;
+  font-size: 2rem;
+  .wrapper {
+    @include centering(both);
+    background-color: #5ec576;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+  }
+
+  .check__icon {
+    font-size: 85px;
+    color: #fff;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #5ec576;
+      width: 126%;
+      height: 100%;
+      transform: rotate(-50deg);
+    }
+  }
+
+  .message {
+    text-align: center;
+    .title {
+      font-size: 3rem;
+    }
+  }
+
+  .btn {
+    color: #fff;
+    text-decoration: none;
+  }
+}
