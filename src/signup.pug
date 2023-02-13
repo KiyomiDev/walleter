@@ -1,0 +1,65 @@
+doctype html
+html(lang="en")
+  head 
+    include components/inhead
+    title singup
+  
+  body 
+    header.setup__header
+      .progressbar
+        .bar
+        .bar__done
+        .step.step__active
+          h4.step__title
+            span.step__num 1
+            | Enter your name
+        .step
+          h4.step__title
+            span.step__num 2
+            | Select base currency
+        .step
+          h4.step__title
+            span.step__num 3
+            | Set up your cash balance
+
+    main.setup
+      section.setting.username.active
+        img.step__icon(src='static/images/user-icon.svg' alt='user icon')
+        h4.step__title What should i call you ?
+        form.setup__form(action='#')
+          .input__group
+            label(for='username') Username
+            input#username.input(type='text' name='username' required='')
+          button.confirm__step.btn(data-step-name='username') Confirm name
+
+      section.setting.base__currency.hide
+        img.step__icon(src='static/images/currency-icon.svg' alt='currency icon')
+        h4.step__title What currency do you use ?
+        form.setup__form(action='#')
+          .input__group
+            label(for='base-currency') Base currency
+            select#currencies__list.currencies__list.input
+              option(value='USD' data-country-name='United States') USD - United States Dollar
+          button.confirm__step.btn(data-step-name='base__currency')
+            | Start with 
+            span.selected__currency USD
+        h5.input__description
+          | Select one currency that you use most often (you can change it later in the settings)
+
+      section.setting.cash__balance.hide
+        img.step__icon(src='static/images/cash-money-icon.svg' alt='cash balance icon')
+        h4.step__title Set up your cash balance
+        form.setup__form(action='#')
+          .input__group
+            label(for='cash-balance') Cash balance
+            input#cash-balance.input(type='number' value='0' name='cash balance' required='')
+          button.confirm__step.btn.cash(data-step-name='cash__balance')
+        h5.input__description You can set and change it later
+
+    .account__created.hide
+      .wrapper
+        span.check__icon &#x2714;
+      .message
+        h4.title Great!
+        p Your account has been created successfully.
+      a.btn(href='dashboard.html') Continue to dashboard
