@@ -22,6 +22,27 @@ const getCurrenciesInfo = _ => {
 
 getCurrenciesInfo();
 
+const setUserCurrency = (userCountryName) => {
+  const allOptions =   document.querySelectorAll('.currencies__list option');
+  allOptions.forEach(option => {
+    const optionCountryName = option.getAttribute('data-country-name');
+  
+    if (optionCountryName === userCountryName) {
+      option.selected = true;
+      selectedCurrency.innerText = option.value;
+    }
+  })
+}
+
+async function getUserCountry() {
+  let res = await fetch('https://ipapi.co/json/'),
+  resData = await res.json();
+  const userCountryName = resData.country_name;
+  setUserCurrency(userCountryName);
+}
+
+getUserCountry();
+
 confirmStepBtns.forEach(btn => {
   btn.addEventListener('click', e => {
 
