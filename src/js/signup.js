@@ -83,6 +83,19 @@ confirmStepBtns.forEach(btn => {
         stepsCount++;
         if (barWidth < 100) barWidth *= 2;
       } 
+
+      if (stepsCount === steps.length) {
+        localStorage.setItem('isUser', true);
+        const setupContainer = document.querySelector('.setup__container');
+        const accountCreatedEl = document.querySelector('.account__created');
+
+        setupContainer.classList.add('hide');
+        accountCreatedEl.classList.remove('hide');
+        accountCreatedEl.classList.add('flex');
+
+        document.documentElement.style.setProperty('--success', "success 1s forwards");
+      }
+
     }
   })
 })
