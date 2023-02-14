@@ -1,6 +1,11 @@
 @use 'variables/colors' as *;
 @use 'helpers/mixins' as *;
 @use 'layout/helper-classes' as *;
+@use 'layout/animations';
+
+:root {
+  --success: none;
+}
 
 .setup__header {
   padding: 20px;
@@ -69,6 +74,11 @@
     width: 45rem;
     padding: 20px;
     text-align: center;
+    animation: fade 250ms ease-in-out forwards;
+    &.active {
+      animation: slide 250ms 125ms ease-in-out both;
+    }
+
     .step__icon {
       max-width: 150px;
     }
@@ -152,6 +162,7 @@
       width: 126%;
       height: 100%;
       transform: rotate(-50deg);
+      animation: var(--success);
     }
   }
 

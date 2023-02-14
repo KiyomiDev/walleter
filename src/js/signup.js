@@ -22,14 +22,15 @@ confirmStepBtns.forEach(btn => {
     if (inputValue) {
       const stepEl = document.querySelector(`.${stepName}`);
       stepEl.classList.remove('active');
-      stepEl.classList.add('hide')
-
-      if (stepEl.nextElementSibling) {
-        const nextStep = stepEl.nextElementSibling;
-        nextStep.classList.remove('hide');
-        nextStep.classList.add('active'); 
-      }
-
+      
+      stepEl.addEventListener('animationend', _ => {
+        stepEl.classList.add('hide')
+        if (stepEl.nextElementSibling) {
+          const nextStep = stepEl.nextElementSibling;
+          nextStep.classList.remove('hide');
+          nextStep.classList.add('active'); 
+        }
+      })
       
       const steps = document.querySelectorAll('.setup__header .step');
       
