@@ -49,7 +49,7 @@ function minifyJs() {
   .src('src/**/*.js')
   .pipe(terser())
   .pipe(cache('linting'))
-  .pipe(gulp.dest('dist/js'))
+  .pipe(gulp.dest('dist'))
   .pipe(livereload());
 }
 
