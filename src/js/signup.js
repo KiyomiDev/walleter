@@ -97,5 +97,7 @@ confirmStepBtns.forEach(btn => {
       }
 
     }
+
+    localStorage.setItem(`${stepName}`, `${inputValue}`);
   })
 })
