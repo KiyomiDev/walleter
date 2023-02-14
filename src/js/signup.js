@@ -103,5 +103,7 @@ confirmStepBtns.forEach(btn => {
   })
 })
 
+const cashBtnText = _ => confirmCashBtn.innerText = `Start with ${cashBalance.value} ${localStorage.getItem('base__currency')}`;
 
 currenciesList.addEventListener('input', _ => selectedCurrency.innerText = currenciesList.value);
+cashBalance.addEventListener('input', _ => cashBtnText());
