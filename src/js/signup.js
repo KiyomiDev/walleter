@@ -99,5 +99,9 @@ confirmStepBtns.forEach(btn => {
     }
 
     localStorage.setItem(`${stepName}`, `${inputValue}`);
+    localStorage.getItem('base__currency') ? cashBtnText() : confirmCashBtn.innerText = `Start with 0.00`;
   })
 })
+
+
+currenciesList.addEventListener('input', _ => selectedCurrency.innerText = currenciesList.value);
