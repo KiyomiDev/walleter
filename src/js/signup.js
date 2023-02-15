@@ -1,5 +1,3 @@
-import countriesInfo from '../static/data/countriesInfo.json' assert {type:'json'};
-
 const currenciesList = document.querySelector('.currencies__list');
 const confirmStepBtns = document.querySelectorAll('.confirm__step');
 const setupForm = document.querySelectorAll('.setup__form');
@@ -9,18 +7,17 @@ const selectedCurrency = document.querySelector('.selected__currency');
 const cashBalance = document.querySelector('.cash__balance .input');
 const confirmCashBtn = document.querySelector('.setup__form .cash');
 
-
-const getCurrenciesInfo = _ => {
-  countriesInfo.forEach(country => {
-    const countryName = country.countryName;
-    const currencyName = country.currencyName;
-    const currencyCode = country.currencyCode;
-    const currencyOptionEl = `<option value="${currencyCode}" data-country-name=${countryName}>${currencyCode} - ${currencyName}</option>`;
-    currencyCode === 'USD' ? 0 : currenciesList.insertAdjacentHTML('beforeend', currencyOptionEl);
-  })
-}
-
-getCurrenciesInfo();
+fetch("../static/data/countriesInfo.json")
+  .then((res) => res.json())
+  .then((countriesInfo) => {
+    countriesInfo.forEach(country => {
+      const countryName = country.countryName;
+      const currencyName = country.currencyName;
+      const currencyCode = country.currencyCode;
+      const currencyOptionEl = `<option value="${currencyCode}" data-country-name=${countryName}>${currencyCode} - ${currencyName}</option>`;
+      currencyCode === 'USD' ? 0 : currenciesList.insertAdjacentHTML('beforeend', currencyOptionEl);
+    })
+});
 
 const setUserCurrency = (userCountryName) => {
   const allOptions =   document.querySelectorAll('.currencies__list option');
