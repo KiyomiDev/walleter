@@ -11,7 +11,7 @@
   padding: 0 6rem;
   z-index: 100;
 
-  @media (max-width: 23em) {
+  @include screenSize('mobile-M') {
     padding: 0 3rem;
   }
 

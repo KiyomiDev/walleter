@@ -11,3 +11,22 @@
     align-items: center;
   }
 }
+
+// Media Queries
+@mixin screenSize($size) {
+  @if ($size == "tablet") {
+    @media (max-width: 48em) {
+      @content;
+    }
+  }
+  @else if ($size == "mobile-L") {
+    @media (max-width: 32em) {
+      @content;
+    }
+  }
+  @else if ($size == "mobile-M") {
+    @media (max-width: 23em) {
+      @content;
+    }
+  }
+}
