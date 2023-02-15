@@ -44,6 +44,9 @@ body {
   &:hover {
     background-color: $color-primary-darker;
   }
+  @include screenSize('tablet') {
+    font-size: 2rem;
+  }
 }
 
 p {

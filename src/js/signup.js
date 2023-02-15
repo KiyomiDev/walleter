@@ -71,10 +71,17 @@ confirmStepBtns.forEach(btn => {
           steps[stepsCount].classList.remove('step__active');
           steps[stepsCount].classList.add('step__done');
           const bar = document.querySelector('.bar__done');
-          bar.style.cssText = `background-color: #5ec576; width: ${barWidth}%`;
+          bar.style.cssText = `background-color: #5ec576; width: ${window.innerWidth <= 768 ? 0 : barWidth}%`;
+
           if (steps[stepsCount].nextElementSibling) {
             const nextEl = steps[stepsCount].nextElementSibling;
             nextEl.classList.add('step__active');
+            if (window.innerWidth <= 768) {
+              steps[stepsCount].classList.remove('active');
+              steps[stepsCount].style.display = 'none';
+              nextEl.classList.add('active');
+              nextEl.style.display = 'flex';
+            }
           }
         }
         stepsCount++;

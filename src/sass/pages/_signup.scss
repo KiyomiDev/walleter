@@ -7,6 +7,10 @@
   --success: none;
 }
 
+.setup__container {
+  overflow: hidden;
+}
+
 .setup__header {
   padding: 20px;
   background-color: $bg-color-primary;
@@ -32,12 +36,21 @@
       font-weight: 500;
       position: relative;
       background-color: inherit;
+      @include screenSize('tablet') {
+        &:nth-of-type(2n),
+        &:last-of-type {
+          display: none;
+        }
+      }
     }
 
     .step__title {
       @include centering(both);
       gap: 8px;
       padding: 0 15px;
+      @include screenSize('tablet') {
+        padding: 0 15px 0 0;
+      }
     }
 
     .step__num {
@@ -147,6 +160,10 @@
     border: 10px solid #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
+    @include screenSize('tablet') {
+      width: 140px;
+      height: 140px;
+    }
   }
 
   .check__icon {
@@ -163,6 +180,9 @@
       height: 100%;
       transform: rotate(-50deg);
       animation: var(--success);
+    }
+    @include screenSize('tablet') {
+      font-size: 70px;
     }
   }
 
