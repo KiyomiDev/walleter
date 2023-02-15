@@ -42,6 +42,10 @@
           display: none;
         }
       }
+      animation: fade 250ms ease-in-out forwards;
+      &.active {
+        animation: slide 250ms 125ms ease-in-out both;
+      }
     }
 
     .step__title {
