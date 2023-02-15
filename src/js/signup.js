@@ -102,12 +102,12 @@ confirmStepBtns.forEach(btn => {
 
     }
 
-    localStorage.setItem(`${stepName}`, `${inputValue}`);
+    localStorage.setItem(`${stepName}`, `${stepName === 'cash__balance' ? Number(inputValue) : inputValue}`);
     localStorage.getItem('base__currency') ? cashBtnText() : confirmCashBtn.innerText = `Start with 0.00`;
   })
 })
 
-const cashBtnText = _ => confirmCashBtn.innerText = `Start with ${cashBalance.value} ${localStorage.getItem('base__currency')}`;
+const cashBtnText = _ => confirmCashBtn.innerText = `Start with ${Number(cashBalance.value)} ${localStorage.getItem('base__currency')}`;
 
 currenciesList.addEventListener('input', _ => selectedCurrency.innerText = currenciesList.value);
 cashBalance.addEventListener('input', _ => cashBtnText());
