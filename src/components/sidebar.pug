@@ -1,0 +1,35 @@
+aside.sidebar
+  .head 
+    a(href='/')
+      img.nav__logo(src='static/images/logo.png' alt='walleter logo')
+  .wrapper
+    ul(class="sidebar__list")
+      li.item.active: a(href="dashboard.html" class="link")
+        <i class="fa-solid fa-gauge icon"></i> 
+        span Dashboard
+      li.item: a(href="accounts.html" class="link") 
+        <i class="fa-solid fa-wallet icon"></i> 
+        span Accounts
+      li.item: a(href="records.html" class="link") 
+        <i class="fa-solid fa-clock-rotate-left icon"></i> 
+        span Records
+      li.item: a(href="goals.html" class="link") 
+        <i class="fa-solid fa-bullseye icon"></i> 
+        span Goals
+      li.item: a(href="profile.html" class="link") 
+        <i class="fa-solid fa-user icon"></i> 
+        span Profile
+      li.item: a(href="settings.html" class="link") 
+        <i class="fa-solid fa-gear icon"></i> 
+        span Settings
+    ul.sidebar__list.bottom
+      li.item.logout: a(href="/" class="link") 
+        <i class="fa-solid fa-right-from-bracket icon"></i>
+        span Logout 
+      li.item.mode
+        .mode__icon 
+          <i class="fa-regular fa-moon moon__icon icon"></i>
+        span.mode-text Dark mode
+        .switch
+          input(type="checkbox" class="checkbox" checked)
+          span.slider
