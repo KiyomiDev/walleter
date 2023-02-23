@@ -1,0 +1,48 @@
+@use 'variables/colors' as *;
+@use 'variables/other' as *;
+@use 'helpers/mixins' as *;
+@use 'layout/animations';  
+
+.page__container {
+  > .head  {
+    @include centering("vertical");
+    background-color: $white-color;
+    height: 5.7rem;
+    width: calc(100% - 24rem);
+    margin-left: auto;
+    padding: 1rem 2rem;
+    box-shadow: $box-shadow;
+    .menu__icon {
+      font-size: 2.4rem;
+      color: $font-color-primary;
+      line-height: 0;
+      cursor: pointer;
+    }
+    .new__record {
+      @include centering("vertical");
+      gap: 0.5rem;
+      font-size: 1.3rem;
+      padding: 0.5rem 2rem;
+      color: $font-color-primary;
+      margin: 0 3rem;
+      @include screenSize("mobile-M") {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        margin: 0 1.2rem;
+      }
+    }
+    .user__info {
+      @include centering("vertical");
+      gap: 0.7rem;
+      margin-left: auto;
+      .user__image {
+        max-width: 3.7rem;
+        border-radius: 1rem;
+      }
+      .username {
+        color: $font-color-primary;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
