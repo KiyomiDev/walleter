@@ -90,6 +90,9 @@
             @include centering("vertical");
             @extend %sidebar-text;
             position: relative;
+            .mode-text {
+              width: 8.363rem;
+            }
           }
 
           &::before {
@@ -156,6 +159,9 @@
         /* END CREATE TOGGLE BUTTON */
       }
     }
+    .text {
+      transition: $transition-duration ease;
+    }
   }
 }
 
@@ -176,9 +182,17 @@
     .mode__icon {
       cursor: pointer;
     }
+    .mode-text {
+      font-size: 0;
+      width: 0;
+    }
     .icon {
       min-width: 5rem !important;
     }
+  }
+  .text {
+    transition: 0s;
+    opacity: 0;
   }
 }
 
