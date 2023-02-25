@@ -12,23 +12,19 @@
     margin-left: auto;
     padding: 1rem 2rem;
     box-shadow: $box-shadow;
-    .menu__icon {
-      font-size: 2.4rem;
-      color: $font-color-primary;
-      line-height: 0;
-      cursor: pointer;
-    }
+    transition: $transition-duration ease;
     .new__record {
       @include centering("vertical");
       gap: 0.5rem;
       font-size: 1.3rem;
       padding: 0.5rem 2rem;
       color: $font-color-primary;
-      margin: 0 3rem;
+      margin: 0 3rem 0 4.75rem;
+      transition: $transition-duration ease;
       @include screenSize("mobile-M") {
         font-size: 1.2rem;
         padding: 0.5rem 1rem;
-        margin: 0 1.2rem;
+        margin: 0 1.2rem 0 3rem;
       }
     }
     .user__info {
@@ -43,6 +39,15 @@
         color: $font-color-primary;
         font-size: 1.3rem;
       }
+    }
+  }
+}
+
+.page__container.sidebar-closed {
+  > .head {
+    width: calc(100% - 7rem);
+    .new__record {
+      margin: 0;
     }
   }
 }
