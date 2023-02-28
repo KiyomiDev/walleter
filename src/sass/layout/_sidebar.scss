@@ -62,6 +62,8 @@
         padding-top: 4rem;
         .item {
           padding: 0.8rem 0;
+          transition: $transition-duration ease;
+          position: relative;
           .link {
             width: 100%;
             @include centering("vertical");
@@ -74,7 +76,10 @@
             min-width: 5.5rem;
             text-align: center;
           }
-          &.active {
+          .tooltip {
+            visibility: hidden;
+          }
+          &:hover {
             background-color: $bg-color-primary;
             border-radius: $border-radius;
           }
@@ -189,6 +194,25 @@
     .icon {
       min-width: 5rem !important;
     }
+    .tooltip {
+      position: fixed;
+      transform:translate(6.2rem, -2rem);
+      background: $white-color;
+      box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+      padding: 0.6rem 1.2rem;
+      border-radius: $border-radius;
+      font-size: 1.5rem;
+      font-weight: 500;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: $transition-duration ease;
+  }
+  .item:hover .tooltip  {
+    transform:translate(6.2rem, 0rem);
+    opacity: 1;
+    visibility: visible !important;
+  }
   }
   .text {
     transition: 0s;
