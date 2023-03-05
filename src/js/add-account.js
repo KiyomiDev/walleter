@@ -9,6 +9,8 @@ const accountTypeEl = document.querySelector('.account__modal .account__type');
 const accountStartingAmountEl = document.querySelector('.account__modal .starting__amount');
 const accountCurrencyEl = document.querySelector('.account__modal .account__currency');
 const saveAccountBtn = document.querySelector('.account__modal .save__account');
+const dashboardAccounts = document.querySelector('.dashboard .accounts');
+let accountNum = 0;
 
 // Display modal function
 const openModal = _ => {
@@ -55,4 +57,45 @@ saveAccountBtn.addEventListener('click', e => {
   e.preventDefault();
   saveAccountData();
   closeModal();
+  addAccount();
 })
+
+// Get the new account data from local storage
+const getData = _ => {
+  const accountName = localStorage.getItem('account-name');
+  const accountType = localStorage.getItem('account-type');
+  const accountCurrency = localStorage.getItem('account-currency');
+  const accountStartingAmount = localStorage.getItem('account-starting-amount');
+  const accountColor = localStorage.getItem('account-color');
+  const dataArr = [accountName, accountType, accountCurrency, accountStartingAmount, accountColor]
+  return dataArr;
+} 
+
+// Create and add the new account in the dashboard page
+const addAccToDashboard = (name, type, currency, amount, color) => {
+  const accountEl = document.createElement('div');
+  accountEl.id = `account-${++accountNum}`;
+  accountEl.classList.add('account');
+
+  const accountTemp = `
+        <i class="fa-solid fa-sack-dollar icon"></i>
+        <div class="info">
+          <h3 class="account__name">${name}</h3>
+          <span class="currency">${currency} </span>
+          <span class="amount">${amount}</span>
+        </div>
+        <i class="fa-solid fa-pen edit"></i>
+    `
+
+  accountEl.innerHTML = accountTemp;
+  accountEl.style.backgroundColor = `${color}`;
+  dashboardAccounts.insertBefore(accountEl, dashboardAccounts.lastChild);
+}
+
+// Add Account Function
+const addAccount =  _ => {
+  let [name, type, currency, amount, color] = getData();
+  if (location.pathname === '/dashboard.html') {
+    addAccToDashboard(name, type, currency, amount, color);
+  }
+}
