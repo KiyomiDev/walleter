@@ -73,23 +73,36 @@ const getData = _ => {
 
 // Create and add the new account in the dashboard page
 const addAccToDashboard = (name, type, currency, amount, color) => {
-  const accountEl = document.createElement('div');
-  accountEl.id = `account-${++accountNum}`;
-  accountEl.classList.add('account');
+  const accountWidth = (dashboardAccounts.offsetWidth * (matchMedia(`(max-width: 368px)`) ? 25 : 18)) / 100;
+  // Get the total width of the children
+  const children = dashboardAccounts.children;
+  let totalWidth = 0;
 
-  const accountTemp = `
-        <i class="fa-solid fa-sack-dollar icon"></i>
-        <div class="info">
-          <h3 class="account__name">${name}</h3>
-          <span class="currency">${currency} </span>
-          <span class="amount">${amount}</span>
-        </div>
-        <i class="fa-solid fa-pen edit"></i>
-    `
+  for (let i = 0; i < children.length; i++) {
+      totalWidth += parseInt(children[i].offsetWidth, 10);
+  }
 
-  accountEl.innerHTML = accountTemp;
-  accountEl.style.backgroundColor = `${color}`;
-  dashboardAccounts.insertBefore(accountEl, dashboardAccounts.lastChild);
+  const isThereSpace = totalWidth < dashboardAccounts.offsetWidth - accountWidth;
+
+  if (isThereSpace) {
+    const accountEl = document.createElement('div');
+    accountEl.id = `account-${++accountNum}`;
+    accountEl.classList.add('account');
+
+    const accountTemp = `
+          <i class="fa-solid fa-sack-dollar icon"></i>
+          <div class="info">
+            <h3 class="account__name">${name}</h3>
+            <span class="currency">${currency} </span>
+            <span class="amount">${amount}</span>
+          </div>
+          <i class="fa-solid fa-pen edit"></i>
+      `
+
+    accountEl.innerHTML = accountTemp;
+    accountEl.style.backgroundColor = `${color}`;
+    dashboardAccounts.insertBefore(accountEl, dashboardAccounts.lastChild);
+  }
 }
 
 // Add Account Function

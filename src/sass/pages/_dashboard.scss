@@ -78,6 +78,9 @@
             opacity: 1;
             pointer-events: auto;
           }
+          @include screenSize("mobile-M") {
+            min-width: 25%;
+          }
         }
         .add__account-btn {
           min-width: 18%;
@@ -95,6 +98,9 @@
           &:hover {
             border-color: $color-primary;
             color: $color-primary;
+          }
+          @include screenSize("mobile-M") {
+            min-width: 25%;
           }
         }
       }
