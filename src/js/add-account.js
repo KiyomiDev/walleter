@@ -12,6 +12,12 @@ const saveAccountBtn = document.querySelector('.account__modal .save__account');
 const dashboardAccounts = document.querySelector('.dashboard .accounts');
 let accountNum = 0;
 
+let accountsObj = {};
+
+if (localStorage.getItem('accountsObj') != null) {
+  accountsObj = JSON.parse(localStorage.getItem('accountsObj'));
+}
+
 // Display modal function
 const openModal = _ => {
   accountModalTitle.innerText = 'add account';
@@ -110,5 +116,26 @@ const addAccount =  _ => {
   let [name, type, currency, amount, color] = getData();
   if (location.pathname === '/dashboard.html') {
     addAccToDashboard(name, type, currency, amount, color);
+    saveAllAccountsData(name, type, currency, amount, color);
   }
+}
+// Increase accounts number
+const increaseAccountsNumber = _ => {
+  let accountsCount = Number(localStorage.getItem('accounts-count'));
+  localStorage.setItem('accounts-count', ++accountsCount);
+}
+
+// Save all accounts data in an object in local storage 
+const saveAllAccountsData = (name, type, currency, amount, color) => {
+  increaseAccountsNumber();
+  const accountKey = `account-${localStorage.getItem('accounts-count')}`;
+  accountsObj[accountKey] = {
+    name: name,
+    type: type,
+    currency: currency,
+    amount: amount,
+    color: color,
+  };
+
+  localStorage.setItem("accountsObj", JSON.stringify(accountsObj));
 }
