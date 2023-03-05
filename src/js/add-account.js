@@ -4,6 +4,11 @@ const accountModalTitle = document.querySelector('.account__modal .title');
 const closeModalBtn = document.querySelector('.account__modal .close__modal');
 const overlay = document.querySelector('.overlay');
 const accountNameEl = document.querySelector('.account__modal .account__name');
+const accountColorEl = document.querySelector('.account__modal .account__color');
+const accountTypeEl = document.querySelector('.account__modal .account__type');
+const accountStartingAmountEl = document.querySelector('.account__modal .starting__amount');
+const accountCurrencyEl = document.querySelector('.account__modal .account__currency');
+const saveAccountBtn = document.querySelector('.account__modal .save__account');
 
 // Display modal function
 const openModal = _ => {
@@ -31,3 +36,23 @@ document.addEventListener('keydown', e => {
     closeModal();
   }
 });
+
+// Save new account data function
+const saveAccountData = _ => {
+  const accountNameVal = accountNameEl.value;
+  const accountColorVal = accountColorEl.value;
+  const accountTypeVal = accountTypeEl.value;
+  const accountStartingAmountVal = accountStartingAmountEl.value;
+  const accountCurrencyVal = accountCurrencyEl.value;
+  localStorage.setItem('account-name', accountNameVal);
+  localStorage.setItem('account-color', accountColorVal);
+  localStorage.setItem('account-type', accountTypeVal);
+  localStorage.setItem('account-starting-amount', accountStartingAmountVal);
+  localStorage.setItem('account-currency', accountCurrencyVal);
+}
+// Save new account data in localstorage on click
+saveAccountBtn.addEventListener('click', e => {
+  e.preventDefault();
+  saveAccountData();
+  closeModal();
+})
