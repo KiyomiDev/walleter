@@ -1,0 +1,26 @@
+.account__modal.hide-2
+  .modal__head 
+      h2.title
+      <i class="fa-solid fa-xmark icon close__modal"></i>
+  form.modal__form 
+    .wrapper 
+      .input__container
+        label.input__title(for="account-name") Name
+        input#account-name.account__name.input(type="text", name="name" placeholder="Account name" required) 
+      .input__container.small__field
+        label.input__title(for="account-color") Color
+        input#account-color.account__color.input(type="color", name="account-color")
+    .wrapper
+      .input__container
+        label.input__title(for="account-type") Account Type
+        input#account-type.account__type.input(type="text", name="account-type" placeholder="Cash" required)
+    .wrapper
+      .input__container
+        label.input__title(for="starting-amount") Starting Amount
+        input#starting-amount.starting__amount.input(type="number", name="starting-amount" placeholder="0" value="0")
+      .input__container.small__field
+        label.input__title(for="account-currency") Currency
+        select#account-currency.account__currency.input(name="account-currency") 
+          option(value="USD") USD
+    button.save__account.btn Save
+.overlay.hide-2
