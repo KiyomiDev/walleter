@@ -1,0 +1,60 @@
+@use 'variables/colors' as *;
+@use 'variables/other' as *;
+@use 'helpers/mixins' as *;
+
+.page__container.dashboard {
+  .page__title {
+    color: $font-color-primary;
+    font-size: 3rem;
+    width: fit-content;
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+    }
+    &::before {
+      background-color: $white-color;
+      width: 75%;
+    }
+    &::after {
+      width: 30%;
+      background-color: $font-color-primary;
+    }
+  }
+  .add__account {
+    @include centering("vertical");
+    gap: 2rem;
+    background-color: $white-color;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    padding: 2rem;
+    margin: 2rem 0;
+    .accounts {
+      flex-grow: 1;
+      @include centering("vertical");
+      gap: 1.2rem;
+      .add__account-btn {
+        min-width: 18%;
+        @include centering("both");
+        gap: 0.5rem;
+        background-color: transparent;
+        color: $font-color-primary;
+        font-size: 1.4rem;
+        border: 2px dashed $light-gray;
+        padding: 1.33rem 1rem;
+        padding: 1.335rem 1rem;
+        border-radius: $border-radius;
+        transition-duration: $transition-duration;
+        cursor: pointer;
+        &:hover {
+          border-color: $color-primary;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}

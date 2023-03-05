@@ -4,7 +4,14 @@ html(lang="en")
     include components/inhead
     title Dashboard
   body
-    .page__container.sidebar-closed
+    .page__container.dashboard.sidebar-closed
       include components/sidebar
       include components/head
+      main.main__content 
+        h1.page__title Dashboard
+        section.add__account 
+          .accounts 
+            button.add__account-btn
+              <i class="fa-solid fa-plus icon"></i>
+              span Add Account
     script(src="js/general.js") 
