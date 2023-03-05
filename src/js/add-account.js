@@ -3,12 +3,14 @@ const accountModal = document.querySelector('.account__modal');
 const accountModalTitle = document.querySelector('.account__modal .title');
 const closeModalBtn = document.querySelector('.account__modal .close__modal');
 const overlay = document.querySelector('.overlay');
+const accountNameEl = document.querySelector('.account__modal .account__name');
 
 // Display modal function
 const openModal = _ => {
   accountModalTitle.innerText = 'add account';
   accountModal.classList.remove('hide-2');
   overlay.classList.remove('hide-2'); 
+  accountNameEl.focus();
 };
 
 // Close modal function
