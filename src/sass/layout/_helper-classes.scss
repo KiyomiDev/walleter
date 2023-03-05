@@ -5,6 +5,11 @@
   visibility: hidden;
 }
 
+.hide-2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .flex {
   display: flex;
 }

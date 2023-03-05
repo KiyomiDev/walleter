@@ -1,0 +1,85 @@
+@use 'variables/colors' as *;
+@use 'variables/other' as *;
+@use 'helpers/mixins' as *;
+
+.account__modal {
+  background-color: $white-color;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 42rem;
+  padding: 2rem;
+  border-radius: 6px;
+  box-shadow: $box-shadow;
+  transition-duration: $transition-duration;
+  z-index: 9999;
+  .modal__head {
+    @include centering("vertical");
+    justify-content: space-between;
+    color: $font-color-primary;
+    padding-bottom: 1rem;
+    position: relative;
+    .title {
+      text-transform: uppercase;
+    }
+    .icon {
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% + 4rem);
+      height: 1px;
+      background-color: $light-gray;
+    }
+  }
+  .modal__form {
+    padding: 3.5rem 2rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .wrapper {
+    @include centering("both");
+    justify-content: space-between;
+    gap: 2rem;
+    .input__title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: $font-color-primary;
+    }
+    .input__container {
+      display: flex;
+      flex-direction: column;
+      .input {
+        font-size: 1.4rem;
+        &:focus {
+          outline: 1px solid $color-primary;
+          border-color: transparent;
+          &:focus::placeholder {
+            opacity: 0; 
+          }
+        }
+      }
+    }
+    .input__container:not(.small__field) {
+      flex-grow: 1;
+      .input {
+        padding: 0.7rem 1rem;
+      }
+    }
+    .small__field .input {
+      min-width: 7rem;
+      padding: 0.4rem 1rem;
+    }
+  }
+  .save {
+    padding: 0.6rem;
+    margin-top: 1rem;
+  }
+}
