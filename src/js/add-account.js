@@ -10,6 +10,7 @@ const accountStartingAmountEl = document.querySelector('.account__modal .startin
 const accountCurrencyEl = document.querySelector('.account__modal .account__currency');
 const saveAccountBtn = document.querySelector('.account__modal .save__account');
 const dashboardAccounts = document.querySelector('.dashboard .accounts');
+const currentPathname = location.pathname;
 let accountNum = 0;
 
 let accountsObj = {};
@@ -114,7 +115,7 @@ const addAccToDashboard = (name, type, currency, amount, color) => {
 // Add Account Function
 const addAccount =  _ => {
   let [name, type, currency, amount, color] = getData();
-  if (location.pathname === '/dashboard.html') {
+  if (currentPathname === '/dashboard.html') {
     addAccToDashboard(name, type, currency, amount, color);
     saveAllAccountsData(name, type, currency, amount, color);
   }
@@ -138,4 +139,21 @@ const saveAllAccountsData = (name, type, currency, amount, color) => {
   };
 
   localStorage.setItem("accountsObj", JSON.stringify(accountsObj));
+}
+
+// Display accounts from local storage
+const displayAccounts = (fn) => {
+  const accounts = JSON.parse(localStorage.getItem('accountsObj'));
+  for (const account in accounts) {
+    const name = accounts[account].name;
+    const type = accounts[account].type;
+    const amount = accounts[account].amount;
+    const currency = accounts[account].currency;
+    const color = accounts[account].color;
+    fn(name, type, currency, amount, color);
+  }
+}
+
+if (currentPathname === '/dashboard.html') {
+  displayAccounts(addAccToDashboard);
 }
