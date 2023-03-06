@@ -59,12 +59,19 @@ const saveAccountData = _ => {
   localStorage.setItem('account-starting-amount', accountStartingAmountVal);
   localStorage.setItem('account-currency', accountCurrencyVal);
 }
-// Save new account data in localstorage on click
+// Save account data in localstorage on click
 saveAccountBtn.addEventListener('click', e => {
   e.preventDefault();
-  saveAccountData();
-  closeModal();
-  addAccount();
+  if (accountModalTitle.innerText === 'ADD ACCOUNT') {
+    addAccount();
+    saveAccountData();
+    closeModal();
+  } else {
+    initializeFormToEdit();
+    editAccount();
+    saveAccountData();
+    closeModal();
+  }
 })
 
 // Get the new account data from local storage
@@ -118,6 +125,7 @@ const addAccount =  _ => {
   if (currentPathname === '/dashboard.html') {
     addAccToDashboard(name, type, currency, amount, color);
     saveAllAccountsData(name, type, currency, amount, color);
+    initializeFormToEdit();
   }
 }
 // Increase accounts number
@@ -154,6 +162,58 @@ const displayAccounts = (fn) => {
   }
 }
 
+const formUpdate = accountId => {
+  // Change form title
+  accountModalTitle.innerText = 'edit account';
+  // Disable currency change
+  accountCurrencyEl.setAttribute('disabled', '');
+  accountCurrencyEl.style.cursor = 'not-allowed';
+  closeModalBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+  localStorage.setItem('changed-id', accountId);
+
+  // In the input fields, show the account data that will be modified
+  const accountsObj = JSON.parse(localStorage.getItem('accountsObj'));
+  accountNameEl.value = accountsObj[accountId].name;
+  accountTypeEl.value = accountsObj[accountId].type;
+  accountColorEl.value = accountsObj[accountId].color;
+  accountStartingAmountEl.value = accountsObj[accountId].amount;
+}
+
+const initializeFormToEdit = _ => {
+  const edit = Array.from(document.querySelectorAll('.edit'));
+
+  edit.forEach(el => {
+    el.addEventListener('click', e => {
+      const accountId = e.target.parentNode.id;
+      openModal();
+      formUpdate(accountId);
+    })
+  })
+}
+
+function editAccount() {
+  const changedAcc = localStorage.getItem('changed-id');
+  const accountEl = document.getElementById(changedAcc) 
+  const [name, type, , amount, color] = getData();
+  
+  const nameEl = document.querySelector(`#${changedAcc} .account__name`);
+  const amountEl = document.querySelector(`#${changedAcc} .amount`);
+
+  nameEl.innerText = name;
+  amountEl.innerText = amount;
+  accountEl.style.backgroundColor = `${color}`;
+
+  let accountsObj = JSON.parse(localStorage.getItem('accountsObj'));
+  accountsObj[changedAcc].name = name;
+  accountsObj[changedAcc].amount = amount;
+  accountsObj[changedAcc].type = type;
+  accountsObj[changedAcc].color = color;
+
+  localStorage.setItem('accountsObj', JSON.stringify(accountsObj));
+}
+
 if (currentPathname === '/dashboard.html') {
   displayAccounts(addAccToDashboard);
+  initializeFormToEdit();
 }
