@@ -67,9 +67,9 @@ saveAccountBtn.addEventListener('click', e => {
     addAccount();
     closeModal();
   } else {
+    saveAccountData();
     initializeFormToEdit();
     editAccount();
-    saveAccountData();
     closeModal();
   }
 })
