@@ -63,8 +63,8 @@ const saveAccountData = _ => {
 saveAccountBtn.addEventListener('click', e => {
   e.preventDefault();
   if (accountModalTitle.innerText === 'ADD ACCOUNT') {
-    addAccount();
     saveAccountData();
+    addAccount();
     closeModal();
   } else {
     initializeFormToEdit();
