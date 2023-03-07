@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+  head 
+    include components/inhead
+    title Dashboard
+  body
+    .page__container.accounts.sidebar-closed
+      include components/sidebar
+      include components/head
+      main.main__content
+        .tools
+          .search-bar 
+            <i class="fa-solid fa-magnifying-glass search__icon"></i> 
+            input.search-input(type="search" placeholder="Search.." required)
+          .sort
+            label(for="sort") Sort by
+            select#sort.sort__input(name="sort")
+              option.sort__option(value="default") Default   
+              option.sort__option(value="a-z") A-Z   
+              option.sort__option(value="z-a") Z-A   
+              option.sort__option(value="lowest-first") Balance (lowest first)   
+              option.sort__option(value="highest-first") Balance (highest first)   
+          
+        .all__accounts-container
+          .all__accounts
+            .add__account
+              button.add__account-btn
+                <i class="fa-solid fa-plus icon"></i>
+                span Add Account        
+      include components/account-modal 
+    script(src="js/general.js") 
+    script(src="js/add-account.js")
