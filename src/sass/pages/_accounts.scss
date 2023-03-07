@@ -1,0 +1,111 @@
+@use 'variables/colors' as *;
+@use 'variables/other' as *;
+@use 'helpers/mixins' as *;
+
+.accounts {
+  .tools {
+    @include centering("vertical");
+    justify-content: space-between;
+    margin: 2rem 0;
+    .search-bar {
+      position: relative;
+      .search-input {
+        padding: 0.7rem 0.7rem 0.7rem 3rem;
+        border: 1px solid $light-gray;
+        font-size: 1.3rem;
+        color: $font-color-primary;
+        &:focus {
+          border: 1px solid $color-primary;
+          outline: none;
+        }
+        @include screenSize("mobile-M") {
+          max-width: 10rem;
+        }
+      }
+      .search__icon {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        font-size: 1.3rem;
+        color: $dark-gray;
+      }
+    }
+    .sort {
+      @include centering("vertical");
+      gap: 0.7rem;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: $font-color-primary;
+      .sort__input {
+        color: $font-color-primary;
+        font-size: 1.3rem;
+        padding: 0.5rem 0.7rem;
+        border: 1px solid $light-gray;
+        outline: none;
+        &:focus {
+          border: 1px solid $color-primary;
+        }
+        @include screenSize("mobile-M") {
+          max-width: 12rem;
+        }
+      }
+    }
+    .sort__input * {
+      display: inline-block;
+      padding: 1rem
+    }
+  }
+  .all__accounts-container {
+    background-color: $white-color;
+    padding: 2rem;
+    box-shadow: $box-shadow;
+    .all__accounts {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .add__account-btn {
+        padding: 1rem 1rem;
+        margin-left: auto;
+      }
+      .account {
+        padding: 1.5rem 2rem;
+        background-color: $accounts-bg;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        cursor: pointer;
+        transition-duration: $transition-duration;
+        &:hover {
+          box-shadow: 0 4px 10px 0 rgba($color: $font-color-primary, $alpha: 0.2);
+          transform: scale(1.01);
+        }
+        .info {
+          @include centering("vertical");
+          justify-content: space-between;
+          .wrapper {
+            @include centering("vertical");
+            font-size: 1.2rem;
+            color: $font-color-primary;
+            &:first-of-type {
+              gap: 1rem;
+            }
+            &:last-of-type {
+              gap: 0.4rem;
+            }
+            .icon {
+              padding: 0.8rem;
+              border-radius: $border-radius;
+              color: $white-color;
+              font-size: 1.7rem;
+            }
+            .account__type {
+              color: $account-type-color;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -84,21 +84,7 @@
         }
         .add__account-btn {
           min-width: 18%;
-          @include centering("both");
-          gap: 0.5rem;
-          background-color: transparent;
-          color: $font-color-primary;
-          font-size: 1.4rem;
-          border: 2px dashed $light-gray;
-          padding: 1.33rem 1rem;
           padding: 1.335rem 1rem;
-          border-radius: $border-radius;
-          transition-duration: $transition-duration;
-          cursor: pointer;
-          &:hover {
-            border-color: $color-primary;
-            color: $color-primary;
-          }
           @include screenSize("mobile-M") {
             min-width: 25%;
           }

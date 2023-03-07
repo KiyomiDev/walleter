@@ -83,4 +83,20 @@ p {
   transition-duration: $transition-duration;
   z-index: 999;
 }
+
+.add__account-btn {
+  @include centering("both");
+  gap: 0.5rem;
+  background-color: transparent;
+  color: $font-color-primary;
+  font-size: 1.4rem;
+  border: 2px dashed $light-gray;
+  border-radius: $border-radius;
+  transition-duration: $transition-duration;
+  cursor: pointer;
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
 /* END GENERAL ELEMENTS */
