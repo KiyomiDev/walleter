@@ -248,4 +248,6 @@ function editAccount() {
 if (currentPathname === '/dashboard.html') {
   displayAccounts(addAccToDashboard);
   initializeFormToEdit();
+} else if (currentPathname === '/accounts.html') {
+  displayAccounts(addAccToAccounts);
 }
