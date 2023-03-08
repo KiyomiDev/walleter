@@ -10,6 +10,7 @@ const accountStartingAmountEl = document.querySelector('.account__modal .startin
 const accountCurrencyEl = document.querySelector('.account__modal .account__currency');
 const saveAccountBtn = document.querySelector('.account__modal .save__account');
 const dashboardAccounts = document.querySelector('.dashboard .accounts');
+const allAccounts = document.querySelector('.accounts .all__accounts');
 const currentPathname = location.pathname;
 let accountNum = 0;
 
@@ -119,13 +120,44 @@ const addAccToDashboard = (name, type, currency, amount, color) => {
   }
 }
 
+// Create and add the new account in the accounts page
+const addAccToAccounts = (name, type, currency, amount, color) => {
+    // Create account element
+    const accountEl = document.createElement('div');
+    const accountId = `account-${++accountNum}`;
+    accountEl.id = accountId;
+    accountEl.classList.add('account');
+  
+    const accountTemp = `
+        <div class="info">
+          <div class="wrapper">
+            <i class="fa-solid fa-sack-dollar icon"></i>
+            <h3 class="account__name">${name}</h3>
+          </div>
+          <div class="wrapper">
+            <h3 class="account__type">${type}</h3>
+          </div>
+          <div class="wrapper">
+            <h3 class="currency">${currency}</h3>
+            <h3 class="amount">${amount}</h3>
+          </div>
+        </div>
+      `
+      accountEl.innerHTML = accountTemp;
+      allAccounts.appendChild(accountEl);
+      const accountIcon = document.querySelector(`#${accountId} .icon`);
+      accountIcon.style.backgroundColor = `${color}`;
+}
+
 // Add Account Function
 const addAccount =  _ => {
   let [name, type, currency, amount, color] = getData();
+  saveAllAccountsData(name, type, currency, amount, color);
   if (currentPathname === '/dashboard.html') {
     addAccToDashboard(name, type, currency, amount, color);
-    saveAllAccountsData(name, type, currency, amount, color);
     initializeFormToEdit();
+  } else if (currentPathname === '/accounts.html') {
+    addAccToAccounts(name, type, currency, amount, color);
   }
 }
 // Increase accounts number
