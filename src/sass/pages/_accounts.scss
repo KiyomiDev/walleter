@@ -61,14 +61,14 @@
     background-color: $white-color;
     padding: 2rem;
     box-shadow: $box-shadow;
+    .add__account-btn {
+      padding: 1rem 1rem;
+      margin-left: auto;
+    }
     .all__accounts {
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      .add__account-btn {
-        padding: 1rem 1rem;
-        margin-left: auto;
-      }
       .account {
         padding: 1.5rem 2rem;
         background-color: $accounts-bg;
@@ -76,6 +76,9 @@
         box-shadow: $box-shadow;
         cursor: pointer;
         transition-duration: $transition-duration;
+        &:first-of-type {
+          margin-top: 2rem;
+        }
         &:hover {
           box-shadow: 0 4px 10px 0 rgba($color: $font-color-primary, $alpha: 0.2);
           transform: scale(1.01);

@@ -22,13 +22,14 @@ html(lang="en")
               option.sort__option(value="highest-first") highest first 
           
         .all__accounts-container
+          .add__account
+            button.add__account-btn
+              <i class="fa-solid fa-plus icon"></i>
+              span Add Account  
           .all__accounts
-            .add__account
-              button.add__account-btn
-                <i class="fa-solid fa-plus icon"></i>
-                span Add Account        
       include components/account-modal 
     script(src="js/general.js") 
     script(type='module' src="js/accounts.js")
-    script(src="js/add-account.js")
+    script(type='module' src="js/add-account.js")
     script(type='module' src="js/search-filter.js")
+    script(type='module' src="js/sort.js") 

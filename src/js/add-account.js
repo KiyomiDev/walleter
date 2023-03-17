@@ -1,3 +1,6 @@
+import { select } from "./accounts.js";
+import { sortByVal } from "./sort.js";
+
 const addAccountBtn = document.querySelector('.add__account-btn');
 const accountModal = document.querySelector('.account__modal');
 const accountModalTitle = document.querySelector('.account__modal .title');
@@ -10,9 +13,13 @@ const accountStartingAmountEl = document.querySelector('.account__modal .startin
 const accountCurrencyEl = document.querySelector('.account__modal .account__currency');
 const saveAccountBtn = document.querySelector('.account__modal .save__account');
 const dashboardAccounts = document.querySelector('.dashboard .accounts');
-const allAccounts = document.querySelector('.accounts .all__accounts');
+export const allAccounts = document.querySelector('.accounts .all__accounts');
 const currentPathname = location.pathname;
 let accountNum = 0;
+function setAccountsNum(value) {
+  accountNum = value;
+}
+export {accountNum, setAccountsNum};
 
 let accountsObj = {};
 
@@ -121,7 +128,7 @@ const addAccToDashboard = (name, type, currency, amount, color) => {
 }
 
 // Create and add the new account in the accounts page
-const addAccToAccounts = (name, type, currency, amount, color) => {
+export const addAccToAccounts = (name, type, currency, amount, color) => {
     // Create account element
     const accountEl = document.createElement('div');
     const accountId = `account-${++accountNum}`;
@@ -158,6 +165,9 @@ const addAccount =  _ => {
     initializeFormToEdit();
   } else if (currentPathname === '/accounts.html') {
     addAccToAccounts(name, type, currency, amount, color);
+    // Sort accounts
+    const optionVal = select.value;
+    sortByVal(optionVal);
   }
 }
 // Increase accounts number
@@ -182,7 +192,7 @@ const saveAllAccountsData = (name, type, currency, amount, color) => {
 }
 
 // Display accounts from local storage
-const displayAccounts = (fn) => {
+export const displayAccounts = (fn) => {
   const accounts = JSON.parse(localStorage.getItem('accountsObj'));
   for (const account in accounts) {
     const name = accounts[account].name;
