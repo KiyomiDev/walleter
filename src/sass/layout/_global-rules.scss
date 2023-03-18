@@ -99,4 +99,27 @@ p {
     color: $color-primary;
   }
 }
+
+.page__title {
+  color: $font-color-primary;
+  font-size: 3rem;
+  width: fit-content;
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+  }
+  &::before {
+    background-color: $white-color;
+    width: 75%;
+  }
+  &::after {
+    width: 30%;
+    background-color: $font-color-primary;
+  }
+}
 /* END GENERAL ELEMENTS */
