@@ -39,8 +39,18 @@ export const displayDefault = _ => {
 select.addEventListener('change', e => {
   const optionVal = select.value;
   sortByVal(optionVal);
+})
+
+// Detect changes in the accounts elements 
+const config = {childList: true};
+
+const callback = _ => {
   allAccountsEl = document.querySelectorAll('.accounts .account');
   accountsName = Array.from(document.querySelectorAll('h3.account__name'));
   accountsType = Array.from(document.querySelectorAll('h3.account__type'));
   accountsCurrency = Array.from(document.querySelectorAll('.accounts .currency'));
-})
+};
+
+const observer = new MutationObserver(callback);
+
+observer.observe(allAccounts, config);
