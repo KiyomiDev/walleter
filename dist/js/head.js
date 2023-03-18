@@ -1,0 +1,1 @@
+const userName=localStorage.getItem("username"),userNameEl=document.querySelector(".head .user__info .username"),firstName=userName.split(" ")[0];userNameEl.innerText=firstName;
