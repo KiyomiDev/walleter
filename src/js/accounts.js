@@ -3,10 +3,10 @@ import { addAccToAccounts, displayAccounts, setAccountsNum, allAccounts} from ".
 import { sortByVal } from "./sort.js";
 
 const accountsSearchInput = document.querySelector('.accounts .search-input');
-const allAccountsEl = document.querySelectorAll('.accounts .account');
-const accountsName = Array.from(document.querySelectorAll('h3.account__name'));
-const accountsType = Array.from(document.querySelectorAll('h3.account__type'));
-const accountsCurrency = Array.from(document.querySelectorAll('.accounts .currency'));
+let allAccountsEl = document.querySelectorAll('.accounts .account');
+let accountsName = Array.from(document.querySelectorAll('h3.account__name'));
+let accountsType = Array.from(document.querySelectorAll('h3.account__type'));
+let accountsCurrency = Array.from(document.querySelectorAll('.accounts .currency'));
 export const select = document.querySelector('.sort__input');
 
 // Search account by name, type or currency
@@ -39,4 +39,8 @@ export const displayDefault = _ => {
 select.addEventListener('change', e => {
   const optionVal = select.value;
   sortByVal(optionVal);
+  allAccountsEl = document.querySelectorAll('.accounts .account');
+  accountsName = Array.from(document.querySelectorAll('h3.account__name'));
+  accountsType = Array.from(document.querySelectorAll('h3.account__type'));
+  accountsCurrency = Array.from(document.querySelectorAll('.accounts .currency'));
 })
