@@ -10,18 +10,20 @@ let accountsCurrency = Array.from(document.querySelectorAll('.accounts .currency
 export const select = document.querySelector('.sort__input');
 
 // Search account by name, type or currency
-accountsSearchInput.addEventListener('keyup', () => {
-  const searchVal = accountsSearchInput.value.toLowerCase().trim();
-  const filteredNames = filter(accountsName, searchVal);
-  const filteredTypes = filter(accountsType, searchVal);
-  const filteredCurrencies = filter(accountsCurrency, searchVal);
-
-  allAccountsEl.forEach(acc => acc.style.display = 'none');
+if (accountsSearchInput) {
+  accountsSearchInput.addEventListener('keyup', () => {
+    const searchVal = accountsSearchInput.value.toLowerCase().trim();
+    const filteredNames = filter(accountsName, searchVal);
+    const filteredTypes = filter(accountsType, searchVal);
+    const filteredCurrencies = filter(accountsCurrency, searchVal);
   
-  displayFilteredEl(filteredNames);
-  displayFilteredEl(filteredTypes);
-  displayFilteredEl(filteredCurrencies);
-})
+    allAccountsEl.forEach(acc => acc.style.display = 'none');
+    
+    displayFilteredEl(filteredNames);
+    displayFilteredEl(filteredTypes);
+    displayFilteredEl(filteredCurrencies);
+  })
+}
 
 // Reset accounts
 export const resetAccounts = _ => {
@@ -36,10 +38,12 @@ export const displayDefault = _ => {
 }
 
 // Sort accounts
-select.addEventListener('change', e => {
-  const optionVal = select.value;
-  sortByVal(optionVal);
-})
+if (select) {
+  select.addEventListener('change', e => {
+    const optionVal = select.value;
+    sortByVal(optionVal);
+  })
+}
 
 // Detect changes in the accounts elements 
 const config = {childList: true};
@@ -53,4 +57,6 @@ const callback = _ => {
 
 const observer = new MutationObserver(callback);
 
-observer.observe(allAccounts, config);
+if (location.pathname === '/accounts.html') {
+  observer.observe(allAccounts, config);
+}
