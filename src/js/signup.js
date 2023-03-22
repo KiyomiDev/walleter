@@ -6,6 +6,9 @@ let barWidth = 50;
 const selectedCurrency = document.querySelector('.selected__currency');
 const cashBalance = document.querySelector('.cash__balance .input');
 const confirmCashBtn = document.querySelector('.setup__form .cash');
+const goToDashboard = document.querySelector('.account__created .go_to_dashboard');
+
+goToDashboard.addEventListener('click', _ => localStorage.setItem('base-account-created', 'true'));
 
 fetch("../static/data/countriesInfo.json")
   .then((res) => res.json())

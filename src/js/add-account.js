@@ -12,7 +12,7 @@ const accountTypeEl = document.querySelector('.account__modal .account__type');
 const accountStartingAmountEl = document.querySelector('.account__modal .starting__amount');
 const accountCurrencyEl = document.querySelector('.account__modal .account__currency');
 const saveAccountBtn = document.querySelector('.account__modal .save__account');
-const dashboardAccounts = document.querySelector('.dashboard .accounts');
+export const dashboardAccounts = document.querySelector('.dashboard .accounts');
 export const allAccounts = document.querySelector('.accounts .all__accounts');
 const currentPathname = location.pathname;
 let accountNum = 0;
@@ -21,7 +21,7 @@ function setAccountsNum(value) {
 }
 export {accountNum, setAccountsNum};
 
-let accountsObj = {};
+export let accountsObj = {};
 
 if (localStorage.getItem('accountsObj') != null) {
   accountsObj = JSON.parse(localStorage.getItem('accountsObj'));
@@ -94,7 +94,7 @@ const getData = _ => {
 } 
 
 // Create and add the new account in the dashboard page
-const addAccToDashboard = (name, type, currency, amount, color) => {
+export const addAccToDashboard = (name, type, currency, amount, color) => {
   const accountWidth = (dashboardAccounts.offsetWidth * (matchMedia(`(max-width: 368px)`) ? 25 : 18)) / 100;
   // Get the total width of the children
   const children = dashboardAccounts.children;
@@ -171,7 +171,7 @@ const addAccount =  _ => {
   }
 }
 // Increase accounts number
-const increaseAccountsNumber = _ => {
+export const increaseAccountsNumber = _ => {
   let accountsCount = Number(localStorage.getItem('accounts-count'));
   localStorage.setItem('accounts-count', ++accountsCount);
 }
@@ -222,7 +222,7 @@ const formUpdate = accountId => {
   accountStartingAmountEl.value = accountsObj[accountId].amount;
 }
 
-const initializeFormToEdit = _ => {
+export const initializeFormToEdit = _ => {
   const edit = Array.from(document.querySelectorAll('.edit'));
 
   edit.forEach(el => {
