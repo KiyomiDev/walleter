@@ -1,0 +1,1 @@
+const isUser=localStorage.getItem("isUser");isUser||location.replace("/signup.html");
