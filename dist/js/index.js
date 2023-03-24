@@ -1,0 +1,1 @@
+const startBtn=document.querySelector(".start .nav__link");localStorage.getItem("isUser")&&(startBtn.innerText="Dashboard",startBtn.href="dashboard.html");
