@@ -3,6 +3,8 @@ const userNameVal = localStorage.getItem('username');
 const baseCurrencySelect = document.querySelector('.base__currency-select');
 const baseCurrencyVal = localStorage.getItem('base__currency');
 const changeBtns = document.querySelectorAll('.settings__form .change');
+const saveChangesBtn = document.querySelector('.user__info .save');
+const headUserName = document.querySelector('.head .username');
 
 // Display username
 userNameInput.value = userNameVal;
@@ -28,4 +30,28 @@ changeBtns.forEach(btn => {
     inputField.classList.remove('disabled');
     inputField.focus();
   })
+})
+
+
+// Save changes
+saveChangesBtn.addEventListener('click', e => {
+  const accountsObj = JSON.parse(localStorage.getItem('accountsObj'));
+  const userNameInputVal = userNameInput.value;
+  const baseCurrencySelectVal = baseCurrencySelect.value;
+
+  if (userNameInputVal &&  userNameInputVal !== userNameVal) {
+    localStorage.setItem('username', `${userNameInputVal}`);
+    // Get first name
+    const firstName = userNameInputVal.split(' ')[0];
+    // Display username
+    headUserName.innerText = firstName;
+  }
+
+  if (baseCurrencySelectVal !== baseCurrencyVal) {
+    localStorage.setItem('base__currency', `${baseCurrencySelectVal}`);
+    // Change base currency in base account
+    accountsObj['account-1'].currency = baseCurrencySelectVal;
+    localStorage.setItem('accountsObj', JSON.stringify(accountsObj));
+  }
+  e.preventDefault();
 })
