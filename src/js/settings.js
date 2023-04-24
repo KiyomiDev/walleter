@@ -2,6 +2,7 @@ const userNameInput = document.querySelector('.settings__form .username__input')
 const userNameVal = localStorage.getItem('username');
 const baseCurrencySelect = document.querySelector('.base__currency-select');
 const baseCurrencyVal = localStorage.getItem('base__currency');
+const changeBtns = document.querySelectorAll('.settings__form .change');
 
 // Display username
 userNameInput.value = userNameVal;
@@ -18,3 +19,13 @@ fetch("../static/data/countriesInfo.json")
       baseCurrencySelect.insertAdjacentHTML('beforeend', currencyOptionEl);
     })
 });
+
+// Enable change data on click change button
+changeBtns.forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+    const inputField = e.target.previousElementSibling;
+    inputField.classList.remove('disabled');
+    inputField.focus();
+  })
+})
