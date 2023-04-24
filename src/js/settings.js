@@ -135,7 +135,6 @@ uploadUserImg.addEventListener('change', readURL);
 // Display user image on page load
 if (profileImageUrl) {
   profilePic.style.backgroundImage =  profileImageUrl;
-  headUserImage.style.backgroundImage =  profileImageUrl;
 }
 
 // Delete the user image when clicking on delete picture button

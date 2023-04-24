@@ -1,1 +1,1 @@
-const userName=localStorage.getItem("username"),userNameEl=document.querySelector(".head .user__info .username"),firstName=userName.split(" ")[0];userNameEl.innerText=firstName;
+const userName=localStorage.getItem("username"),userNameEl=document.querySelector(".head .user__info .username"),profileImgUrl=localStorage.getItem("profile-image"),firstName=userName.split(" ")[0];userNameEl.innerText=firstName,profileImgUrl&&(document.querySelector(".head .user__image").style.backgroundImage=profileImgUrl);
