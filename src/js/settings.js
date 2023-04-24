@@ -6,6 +6,12 @@ const changeBtns = document.querySelectorAll('.settings__form .change');
 const saveChangesBtn = document.querySelector('.user__info .save');
 const headUserName = document.querySelector('.head .username');
 const cancelChangesBtn = document.querySelector('.user__info .cancel');
+const deleteUserData = document.querySelector('.confirm__account-deletion .delete');
+const confirmDeleteMsg = document.querySelector('.confirm__account-deletion');
+const overlay = document.querySelector('.settings .overlay');
+const closeModalBtn = document.querySelector('.confirm__account-deletion .close__icon');
+const cancelDelete = document.querySelector('.confirm__account-deletion .cancel');
+const deleteAcc = document.querySelector('.delete__user-account');
 
 // Display username
 userNameInput.value = userNameVal;
@@ -71,3 +77,35 @@ cancelChangesBtn.addEventListener('click', e => {
     }
   }
 })
+
+// Delete the account
+deleteUserData.addEventListener('click', _ => {
+  localStorage.clear();
+  location.replace("/"); 
+})
+
+// Display confirm message
+const openModal = _ => {
+  confirmDeleteMsg.classList.remove('hide-2'); 
+  overlay.classList.remove('hide-2');
+};
+
+// Close confirm message
+const closeModal = _ => {
+  confirmDeleteMsg.classList.add('hide-2');
+  overlay.classList.add('hide-2'); 
+};
+
+// Display confirm message when clicking on the delete account button
+deleteAcc.addEventListener('click', openModal)
+// Close confirm message when clicking on the close button
+closeModalBtn.addEventListener('click', closeModal);
+cancelDelete.addEventListener('click', closeModal);
+// Close confirm message when clicking on the overlay element
+overlay.addEventListener('click', closeModal);
+// Close confirm message when pressing esc button on keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && !confirmDeleteMsg.classList.contains('hide-2')) {
+    closeModal();
+  }
+});
