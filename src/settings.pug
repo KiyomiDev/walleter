@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+  head 
+    include components/inhead
+    title Settings
+  body
+    .page__container.settings.sidebar-closed
+      include components/sidebar
+      include components/head
+      main.main__content
+        h1.page__title Settings
+        .wrapper 
+          .user__info
+            form.settings__form
+              .wrapper 
+                label.input__title(for="username") Your Name
+                input.username__input.input.disabled#username(type="text" required) 
+                button.change Change
+              .wrapper 
+                label.input__title(for="base-currency") Base Currency
+                select.base__currency-select.input#base-currency.disabled
+                button.change Change
+              .delete__user-account(href="") Delete My Account
+              .btns 
+                button.cancel cancel
+                button.save(type="submit") save
+          .profile__pic
+            .image
+            .wrapper 
+              button.change__pic.pic-btn Change Picture
+                input.upload__image(type='file' accept=".png, .jpg, .jpeg")
+              button.delete__pic.pic-btn Delete Picture
+      .confirm__account-deletion.hide-2
+        .head 
+          <i class="fa-regular fa-trash-can icon"></i>
+          h4.title Confirm Deletion 
+          <i class="fa-solid fa-xmark close__icon"></i>
+        .content 
+          p.msg Do you really want to delete your account ? This process cannot be undone
+          .action__btns 
+            button.cancel Cancel
+            button.delete Delete
+      .overlay.hide-2
+    script(src="js/general.js")
+    script(src="js/head.js") 
+    script(src="js/settings.js") 
