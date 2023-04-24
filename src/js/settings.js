@@ -15,6 +15,7 @@ const deleteAcc = document.querySelector('.delete__user-account');
 const profilePic = document.querySelector('.profile__pic .image');
 const uploadUserImg = document.querySelector('.upload__image');
 const headUserImage = document.querySelector('.head .user__image'); 
+const profileImageUrl = localStorage.getItem('profile-image');
 
 // Display username
 userNameInput.value = userNameVal;
@@ -127,3 +128,9 @@ const readURL = _ => {
     })
 }
 uploadUserImg.addEventListener('change', readURL);
+
+// Display user image on page load
+if (profileImageUrl) {
+  profilePic.style.backgroundImage =  profileImageUrl;
+  headUserImage.style.backgroundImage =  profileImageUrl;
+}
