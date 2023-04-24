@@ -12,6 +12,9 @@ const overlay = document.querySelector('.settings .overlay');
 const closeModalBtn = document.querySelector('.confirm__account-deletion .close__icon');
 const cancelDelete = document.querySelector('.confirm__account-deletion .cancel');
 const deleteAcc = document.querySelector('.delete__user-account');
+const profilePic = document.querySelector('.profile__pic .image');
+const uploadUserImg = document.querySelector('.upload__image');
+const headUserImage = document.querySelector('.head .user__image'); 
 
 // Display username
 userNameInput.value = userNameVal;
@@ -109,3 +112,18 @@ document.addEventListener('keydown', e => {
     closeModal();
   }
 });
+
+// Create upload user image functionality
+const readURL = _ => {
+    const file = document.querySelector('.upload__image').files[0];
+    const reader = new FileReader();
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+    reader.addEventListener('load', _ => {
+      profilePic.style.backgroundImage =  `url("${reader.result}")`;
+      headUserImage.style.backgroundImage =  `url("${reader.result}")`;
+      localStorage.setItem('profile-image', `url("${reader.result}")`);
+    })
+}
+uploadUserImg.addEventListener('change', readURL);
