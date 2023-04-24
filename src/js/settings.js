@@ -16,6 +16,8 @@ const profilePic = document.querySelector('.profile__pic .image');
 const uploadUserImg = document.querySelector('.upload__image');
 const headUserImage = document.querySelector('.head .user__image'); 
 const profileImageUrl = localStorage.getItem('profile-image');
+const deleteUserImg = document.querySelector('.delete__pic');
+const defaultProfileImgUrl = `url('/static/images/user-image.png')`;
 
 // Display username
 userNameInput.value = userNameVal;
@@ -116,6 +118,7 @@ document.addEventListener('keydown', e => {
 
 // Create upload user image functionality
 const readURL = _ => {
+  console.log(uploadUserImg.value)
     const file = document.querySelector('.upload__image').files[0];
     const reader = new FileReader();
     if (file) {
@@ -134,3 +137,11 @@ if (profileImageUrl) {
   profilePic.style.backgroundImage =  profileImageUrl;
   headUserImage.style.backgroundImage =  profileImageUrl;
 }
+
+// Delete the user image when clicking on delete picture button
+deleteUserImg.addEventListener('click', _ => {
+  profilePic.style.backgroundImage =  defaultProfileImgUrl;
+  headUserImage.style.backgroundImage =  defaultProfileImgUrl;
+  localStorage.setItem('profile-image', defaultProfileImgUrl);
+  uploadUserImg.value = ``;
+})
