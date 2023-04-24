@@ -5,6 +5,7 @@ const baseCurrencyVal = localStorage.getItem('base__currency');
 const changeBtns = document.querySelectorAll('.settings__form .change');
 const saveChangesBtn = document.querySelector('.user__info .save');
 const headUserName = document.querySelector('.head .username');
+const cancelChangesBtn = document.querySelector('.user__info .cancel');
 
 // Display username
 userNameInput.value = userNameVal;
@@ -54,4 +55,19 @@ saveChangesBtn.addEventListener('click', e => {
     localStorage.setItem('accountsObj', JSON.stringify(accountsObj));
   }
   e.preventDefault();
+})
+
+// Cancel changes when click cancel button
+cancelChangesBtn.addEventListener('click', e => {
+  e.preventDefault();
+  userNameInput.value = localStorage.getItem('username');
+
+  const baseCurrencyVal = localStorage.getItem('base__currency');
+  const allOptions =  baseCurrencySelect.options;
+  for (let i = 0; i < allOptions.length; i++) {
+    const optionCountryName = baseCurrencySelect[i].value;
+    if (optionCountryName === baseCurrencyVal) {
+      baseCurrencySelect[i].selected = true;
+    }
+  }
 })
