@@ -1,0 +1,1 @@
+const userNameInput=document.querySelector(".settings__form .username__input"),userNameVal=localStorage.getItem("username");userNameInput.value=userNameVal;
