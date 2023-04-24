@@ -32,12 +32,19 @@
       gap: 0.7rem;
       margin-left: auto;
       .user__image {
-        max-width: 3.7rem;
+        width: 3.7rem;
+        height: 3.7rem;
+        border: 1px solid $light-gray;
+        background-image: url('/static/images/user-image.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         border-radius: 1rem;
       }
       .username {
         color: $font-color-primary;
         font-size: 1.3rem;
+        line-height: 0;
       }
     }
   }
